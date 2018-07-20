@@ -1,0 +1,48 @@
+ul{
+    margin: 20px 20px;
+}
+
+.Tools{
+    width: 70px;
+    height: 100%;
+    background-color: rgba(205, 205, 205, 0.5);
+    border-radius: 15px;
+    padding: 5px 0;
+}
+
+.Tool{
+    margin-top: 10px;
+}
+
+.Tool:hover{
+    background-color: #dddddd;
+    cursor: pointer;
+}
+
+.toolIcon{
+    color: #8f8f8f;
+}
+
+.toolSelected{
+    color: #439834
+}
+
+
+.toolsettings{
+    position: absolute;
+    left: 74px;
+    top: 0;
+    border-radius: 10px;
+    background-color: #eee;
+    padding: 10px;
+    min-width: 300px;
+    box-shadow: 0 0 11px rgba(33,33,33,.2);
+    display: none;
+}
+
+.toolsOpen{
+    display: block;
+}
+.toolsClose{
+    display: none;
+}

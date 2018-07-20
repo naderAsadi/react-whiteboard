@@ -1,0 +1,47 @@
+.NavigationItem {
+    margin: 10px 0px;
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+}
+
+.NavigationItem a {
+    color: inherit;
+    text-decoration: none;
+    width: 100%;
+    box-sizing: border-box;
+    display: block;
+    margin-left: 10px;
+    font-family: IRANSans !important;
+    src: url('../../../assets/fonts/IRANSans.ttf') !important;
+}
+
+.NavigationItem a:hover,
+.NavigationItem a:active,
+.NavigationItem a.active {
+    color: #1eb270;
+}
+
+@media (min-width: 500px) {
+    .NavigationItem {
+        margin: 0;
+        display: inline-block;
+        height: 100%;
+        width: auto;
+        align-items: center;
+    }
+    
+    .NavigationItem a {
+        color: #59626e;
+        height: 100%;
+        padding: 16px 10px;
+        /* border-bottom: 4px solid transparent; */
+    }
+    
+    .NavigationItem a:hover,
+    .NavigationItem a:active,
+    .NavigationItem a.active {
+        /* border-bottom: 4px solid #40A4C8; */
+        color: #1eb270;
+    }
+}
