@@ -36,12 +36,16 @@ class Board extends Component{
     
       saveCanvas=(blobObject)=>{
 
-        localStorage.setItem(
-            "savedDrawing",
-            this.saveableCanvas.getSaveData()
-        );
+        try{
+            localStorage.setItem(
+                "savedDrawing",
+                this.saveableCanvas.getSaveData()
+            );
+            this.saveableCanvas.clear();
+        }catch(error){
+            console.log(error)
+        }
     
-        this.saveableCanvas.clear();
     
         this.setState({
             disabled:true
@@ -62,6 +66,11 @@ class Board extends Component{
       }
     
       startRecording= () => {
+        try{
+            this.saveableCanvas.clear();
+        }catch(error){
+
+        }
         this.setState({
           record: true,
           isRecording: true,
