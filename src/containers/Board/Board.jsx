@@ -12,7 +12,6 @@ import {ReactMic} from 'react-mic';
 
 
 import classes from './Board.css';
-import { isMoment } from 'moment';
 
 class Board extends Component{
     constructor(props){
@@ -107,30 +106,6 @@ class Board extends Component{
 
 
     render(){
-
-        const styles = {
-            toolbar:{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    width: '400 px'
-            },
-          container: {
-            flex: 1,
-            justifyContent: 'center',
-            alignItems: 'center',
-            backgroundColor: '#F5FCFF',
-            position: 'relative'
-          },
-          canvas: {
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            bottom: 0,
-            right: 0,
-          },
-        };
-    
-        const { isRecording } = this.state;
         let toolsClasses=[classes.toolsettings,classes.toolsClose];
         let toolClasses=classes.toolIcon
         if(this.state.toolsOpen){

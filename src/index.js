@@ -10,7 +10,7 @@ console.log(window.innerWidth)
 
 const app=(
     <div className={classes}>
-        <BrowserRouter>
+        <BrowserRouter basename="react-whiteboard">
             <App/>
         </BrowserRouter>
     </div>
