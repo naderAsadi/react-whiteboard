@@ -1,6 +1,4 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
-import Button from '@material-ui/core/Button'; 
 
 import classes from './NavigationItems.css';
 import NavigationItem from './NavigationItem/NavigationItem';
@@ -18,14 +16,10 @@ const navigationItems = (props) => {
             
             <ul className={classes.NavigationItems}>
                 <li>
-                    <Button variant="outlined" size="medium" color="primary">
-                        <NavLink to="/" style={{textDecoration:"none" , color:'#1eb270'}}>ورود</NavLink>
-                    </Button>
+                    <button type="button" class="btn btn-outline-success" style={{marginRight:'10px'}}>ورود</button>
                 </li>
                 <li>
-                    <Button variant="contained" size="medium" style={{backgroundColor:'#1eb270',margin:'0 10px'}}>
-                        <NavLink to="/" style={{textDecoration:"none" , color:'white'}}>ثبت نام</NavLink>
-                    </Button>
+                    <button type="button" class="btn btn-success">ثبت نام</button>
                 </li>
             </ul>
         );

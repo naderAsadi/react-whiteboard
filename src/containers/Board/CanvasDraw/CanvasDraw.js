@@ -8,18 +8,24 @@ export default class extends Component {
     brushColor: "#444",
     canvasWidth: 1000,
     canvasHeight: 1000,
-    disabled: false
+    disabled: false,
+    oldDate:moment()
   };
 
   constructor(props) {
     super(props);
+
+    console.log(props.startTime)
 
     this.isMouseDown = false;
     this.linesArray = [];
     this.timeLine = [];
     this.startDrawIdx = [];
     this.timeoutValidity = 0;
-    this.oldDate=moment();
+  }
+
+  componentDidUpdate(){
+    this.oldDate=this.props.startTime;
   }
 
   getSaveData = () => {
@@ -207,6 +213,7 @@ export default class extends Component {
   };
 
   render() {
+  
     return (
       <canvas
         width={this.props.canvasWidth}

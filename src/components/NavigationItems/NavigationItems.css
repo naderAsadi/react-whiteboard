@@ -12,6 +12,6 @@
     .NavigationItems {
         flex-flow: row;
         align-items: center;
-        text-align: center;
+        text-align: center
     }
 }

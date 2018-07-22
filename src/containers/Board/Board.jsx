@@ -1,19 +1,18 @@
 import React,{Component} from 'react';
-import Button from '@material-ui/core/Button';
+import moment from 'moment';
 import SaveIcon from '@material-ui/icons/Save'
 import LoadIcon from '@material-ui/icons/Refresh'
 import StopIcon from '@material-ui/icons/Stop'
 import PlayIcon from '@material-ui/icons/PlayArrow'
 import PenIcon from '@material-ui/icons/Create';
-import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
 
 import CanvasDraw from './CanvasDraw/CanvasDraw';
-import {ReactMic,saveRecording} from 'react-mic';
+import {ReactMic} from 'react-mic';
 
 
 import classes from './Board.css';
+import { isMoment } from 'moment';
 
 class Board extends Component{
     constructor(props){
@@ -22,13 +21,16 @@ class Board extends Component{
         console.log(this.props.height)
         this.state={
             toolsOpen:false,
+            brushColor:"#000",
+            brushSize:4,
             color: "#ffc600",
             width: this.props.width,
             height: this.props.height,
-            disabled:false,
+            disabled:true,
             record: false,
             blobObject: null,
-            isRecording: false
+            isRecording: false,
+            startTime: false
         };
       }
     
@@ -62,14 +64,17 @@ class Board extends Component{
       startRecording= () => {
         this.setState({
           record: true,
-          isRecording: true
+          isRecording: true,
+          disabled:false,
+          startTime: true
         });
       }
     
       stopRecording= () => {
         this.setState({
           record: false,
-          isRecording: false
+          isRecording: false,
+          disabled:true
         });
       }
     
@@ -84,6 +89,10 @@ class Board extends Component{
           this.setState({
             toolsOpen: !this.state.toolsOpen
           })
+      }
+
+      onPenSizeChange=(value)=>{
+        this.setState({brushSize:value})
       }
     
 
@@ -119,6 +128,7 @@ class Board extends Component{
             toolsClasses=[classes.toolsettings,classes.toolsOpen];
             toolClasses=classes.toolSelected;
         }
+        
         return(
             <div>
                 <table >
@@ -131,12 +141,45 @@ class Board extends Component{
                                         <ListItem onClick={this.onToolsOpen} className={classes.Tool}>
                                             <PenIcon className={toolClasses}/>
                                             <div className={toolsClasses.join(' ')}  >
-                                                <img className="card-img-top" src=".../100px180/" alt="Card image cap"/>>
-                                                <div className="card-body">
-                                                    <h5 className="card-title">Card title</h5>
-                                                    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                                    <a href="#" className="btn btn-primary">Go somewhere</a>
+                                                <div className={classes.colorPicker}>
+                                                    <span>
+                                                        <div className={classes.colorItem} >
+                                                            <span>
+                                                                <div  className={classes.colorInside} style={{backgroundColor:"#000"}} onClick={()=>{this.setState({brushColor:"#000"})}} />
+                                                            </span>
+                                                        </div>
+                                                    </span>
+                                                    <span>
+                                                        <div className={classes.colorItem} >
+                                                            <span>
+                                                                <div  className={classes.colorInside} style={{backgroundColor:"#f44336"}} onClick={()=>{this.setState({brushColor:"#f44336"})}} />
+                                                            </span>
+                                                        </div>
+                                                    </span>
+                                                    <span>
+                                                        <div className={classes.colorItem}>
+                                                            <span >
+                                                                <div  className={classes.colorInside} style={{backgroundColor:"#2196f3"}} onClick={()=>{this.setState({brushColor:"#2196f3"})}} />
+                                                            </span>
+                                                        </div>
+                                                    </span>
+                                                    <span>
+                                                        <div className={classes.colorItem}>
+                                                            <span >
+                                                                <div  className={classes.colorInside} style={{backgroundColor:"#8bc34a"}} onClick={()=>{this.setState({brushColor:"#8bc34a"})}}/>
+                                                            </span>
+                                                        </div>
+                                                    </span>
+                                                    <span>
+                                                        <div className={classes.colorItem}>
+                                                            <span >
+                                                                <div  className={classes.colorInside} style={{backgroundColor:"#fdd835"}} onClick={()=>{this.setState({brushColor:"#fdd835"})}}/>
+                                                            </span>
+                                                        </div>
+                                                    </span>
+                                                    
                                                 </div>
+                                                <hr></hr>
                                             </div>
                                         </ListItem>
                                         <ListItem className={classes.Tool} onClick={this.startRecording}>
@@ -156,24 +199,23 @@ class Board extends Component{
                             </div>
                         </td>
                         <td>
-                            <div style={{width:'500' , height:'100%'}}>
-                                <div style={{width:'500'}}>
-                                    
-                                    
-                
+                            <div >
+                                <div >
                                     <div>
                                         <CanvasDraw
-                                        disabled={this.state.disabled}
-                                        ref={(canvasDraw)=>{
-                                            if(this.state.disabled){
-                                                return(this.loadableCanvas=canvasDraw)
-                                            }else{
-                                                return(this.saveableCanvas=canvasDraw)
-                                            }
-                                        }}
-                                    canvasWidth={window.innerWidth-115}
-                                    canvasHeight={window.innerHeight-80}
-                                    />
+                                            disabled={this.state.disabled}
+                                            ref={(canvasDraw)=>{
+                                                if(this.state.disabled){
+                                                    return(this.loadableCanvas=canvasDraw)
+                                                }else{
+                                                    return(this.saveableCanvas=canvasDraw)
+                                                }
+                                            }}
+                                        canvasWidth={window.innerWidth-115}
+                                        canvasHeight={window.innerHeight-80}
+                                        brushColor={this.state.brushColor}
+                                        startTime={moment()}
+                                        />
                                     </div>
                                 </div>
                             </div>

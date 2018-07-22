@@ -8,6 +8,7 @@ ul{
     background-color: rgba(205, 205, 205, 0.5);
     border-radius: 15px;
     padding: 5px 0;
+    margin-right: 20px;
 }
 
 .Tool{
@@ -30,7 +31,7 @@ ul{
 
 .toolsettings{
     position: absolute;
-    left: 74px;
+    left: 80px;
     top: 0;
     border-radius: 10px;
     background-color: #eee;
@@ -45,4 +46,38 @@ ul{
 }
 .toolsClose{
     display: none;
+}
+
+.colorPicker{
+    width: 300px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -14px;
+    margin-bottom: -14px;
+    margin-left: 15px;
+}
+
+.colorItem{
+    width: 28px;
+    height: 28px;
+    margin-right: 14px;
+    margin-bottom: 14px;
+    transform: scale(1);
+    transition: transform 100ms ease;
+}
+
+.colorInside{
+    width: 28px;
+    height: 28px;
+    margin-right: 14px;
+    margin-bottom: 14px;
+    transform: scale(1);
+    transition: transform 100ms ease;
+    background-color: #439834;
+    border-radius: 100%;
+}
+
+.colorInside:active{
+    width: 30px;
+    height: 30px;
 }
